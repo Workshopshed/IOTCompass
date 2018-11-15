@@ -1,5 +1,5 @@
 # IOTCompass
-A device that always points to where you want to go.
+A device that always points to where you want to go. Using the Azure Sphere
 
 ## Overview
 
