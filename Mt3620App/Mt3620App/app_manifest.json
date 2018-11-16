@@ -1,0 +1,17 @@
+{
+  "SchemaVersion": 1,
+  "Name" : "Mt3620Stepper",
+  "ComponentId" : "fbba4ab5-1dd4-43e3-a7a8-9fbffef7ba47",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedConnections": [],
+    "AllowedTcpServerPorts": [],
+    "AllowedUdpServerPorts": [],
+    "Gpio": [0,1,2,3],
+    "Uart": [],
+    "WifiConfig": false,
+    "NetworkConfig": false,
+    "SystemTime": false
+  }
+}
