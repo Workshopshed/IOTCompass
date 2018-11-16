@@ -1,6 +1,8 @@
 # IOTCompass
 A device that always points to where you want to go. Using the Azure Sphere
 
+See build logs and progress over on https://www.element14.com/community/people/Workshopshed/blog
+
 ## Overview
 
 A device consisting of an Azure Sphere connected to a serial GNSS satellite reciever and stepper motor with a pointer on the motor shaft. As the device is moved it will log its position and calculate what direction a pointer needs to point so that it's always pointing at the same destination.
@@ -17,7 +19,11 @@ Although the Azure Sphere does not need to use the Azure IOT hub to work, I'll t
 The [FunctionApp](https://github.com/Workshopshed/IOTCompass/tree/master/FunctionApp) folder contains the code for an Azure function that calculates a bearing based on two sets of co-ordinates. Thanks to Chris Veness for the function https://www.movable-type.co.uk/scripts/latlong.html which I've ported to C#. This function will be called from the Azure Sphere using the CURL library.
 
 ## Driving the stepper motor
-The stepper motor for the is a little 28BYJ-48 with a darlinton array to drive it. This will be driven from 4 of the GPIOs on the Azure Sphere. I'll need to port/create a suitable library for this based on the LED examples.
+The stepper motor for the is a little 28BYJ-48 with a darlinton array to drive it. This will be driven from 4 of the GPIOs on the Azure Sphere. I based the code for the stepper on some I'd done for the [Topsy Turvy Clock](https://github.com/Workshopshed/TopsyTurvyClock) removing anything that wasn't essential and porting the rest across to the Sphere API.
+
+[![Stepper Motor Test](http://img.youtube.com/vi/2TK33sgr-ck/0.jpg)](https://www.youtube.com/watch?v=2TK33sgr-ck)]
+
+
 
  
 
