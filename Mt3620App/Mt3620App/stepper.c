@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>  //File operations e.g. close
 #include "stepper.h"
 
 //Stepper motor controller
@@ -69,6 +70,26 @@ int STEPPER_Run(volatile stepper_t * s)
 
 	s->stepsToGo--;
 	if (s->stepsToGo <= 0) { s->direction = STOP; }
+
+	return 0;
+}
+
+void CloseFdAndPrintError(int fd, const char *fdName)
+{
+	if (fd >= 0) {
+		int result = close(fd);
+		if (result != 0) {
+			Log_Debug("ERROR: Could not close fd %s: %s (%d).\n", fdName, strerror(errno), errno);
+		}
+	}
+}
+
+int STEPPER_Terminate(volatile stepper_t *s)
+{
+	CloseFdAndPrintError(s->gpio1Fd, "Pin1");
+	CloseFdAndPrintError(s->gpio2Fd, "Pin2");
+	CloseFdAndPrintError(s->gpio3Fd, "Pin3");
+	CloseFdAndPrintError(s->gpio4Fd, "Pin4");
 
 	return 0;
 }

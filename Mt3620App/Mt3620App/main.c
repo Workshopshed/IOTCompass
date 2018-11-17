@@ -52,6 +52,15 @@ static int InitPeripheralsAndHandlers(void)
 	return 0;
 }
 
+/// <summary>
+///     Close peripherals and handlers.
+/// </summary>
+static void ClosePeripheralsAndHandlers(void) {
+	Log_Debug("Closing file descriptors\n");
+
+	STEPPER_Terminate(&stepper);
+}
+
 
 /// <summary>
 ///     Main entry point for this sample.
@@ -75,6 +84,8 @@ int main(int argc, char *argv[])
 		nanosleep(&sleepTime, NULL);
 	}
 
+	ClosePeripheralsAndHandlers();
 	Log_Debug("Application exiting\n");
+
 	return 0;
 }

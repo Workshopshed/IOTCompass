@@ -18,5 +18,7 @@ typedef struct {
 
 int STEPPER_Init(volatile stepper_t *s);
 int STEPPER_Run(volatile stepper_t *s);
+int STEPPER_Terminate(volatile stepper_t *s);
 int STEPPER_SetSteps(volatile stepper_t *s, int steps);
 int ConfigurePin(GPIO_Id pin, int pinNo);
+void CloseFdAndPrintError(int fd, const char *fdName);
