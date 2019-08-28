@@ -16,7 +16,7 @@ int STEPPER_Init(volatile stepper_t * s)
 	if ((s->gpio2Fd = ConfigurePin(s->pin2, 2)) < 0) return -1;
 	if ((s->gpio3Fd = ConfigurePin(s->pin3, 3)) < 0) return -1;
 	if ((s->gpio4Fd = ConfigurePin(s->pin4, 4)) < 0) return -1;
-	return -1;
+	return 0;
 }
 
 int ConfigurePin(GPIO_Id pin,int pinNo)
